@@ -37,6 +37,8 @@ bazel build //main:hello-world
 bazel build ///main:hello-world
 ```
 
+This example is take from [bazel document](https://docs.bazel.build/versions/master/tutorial/cpp.html)
+
 ### External dependency and gtest example
 
 In this step we will see how to include external dependency, for example `gtest`.
