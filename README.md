@@ -68,7 +68,7 @@ cc_test(
 
 ```
 
-Observe how `copts` to include `gtest/include`. Bravo but where is `gtest-main` dependnecy ha?
+Observe how `copts` is used to include `gtest/include`. Bravo but where is `gtest-main` dependnecy ha?
 i.e `"@gtest//:gtest-main"` ?
 
 In `WORKSPACE` specify external repositiry to use in this project usiing `new` repository.
@@ -82,7 +82,7 @@ new_http_archive(
 )
 ```
 
-In `extern-deps/gtest.BUILD` we will define `BUILD` target for `gtest` as follows
+In `external-deps/gtest.BUILD` we will define `BUILD` target for `gtest` as follow
 ```
 cc_library(
     name = "gtest-main",
