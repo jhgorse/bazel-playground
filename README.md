@@ -37,7 +37,7 @@ bazel build //main:hello-world
 bazel build ///main:hello-world
 ```
 
-This example is take from [bazel document](https://docs.bazel.build/versions/master/tutorial/cpp.html)
+This example is referred from [bazel document](https://docs.bazel.build/versions/master/tutorial/cpp.html)
 
 ### External dependency and gtest example
 
