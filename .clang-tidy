@@ -1,0 +1,53 @@
+# Settings file for Clang-Tidy
+#
+# Clang Tidy not only offers traditional linting checks, but also is an
+# interface to the Clang Static Analyzer, giving more semantic checks...
+# plus security/CERT warnings, the Google Style Guide, C++ Core Guidelines
+# and more.
+#
+# This file can be used to configure the global settings, but also individual
+# build targets can tune it.  See the Clang-Tidy Bazel Interface for more:
+#
+# https://github.com/erenon/bazel_clang_tidy
+#
+# To disable a named check, put it in the multi-line-string of "Checks" with
+# a hyphen in front of it.   For example, you can't write code like `argv[1]`
+# with C++ core guidelines which is a non-starter for C code, so disable:
+#
+#    -cppcoreguidelines-pro-bounds-pointer-arithmetic
+#    
+# Enabling checks is if the item doesn't start with a hyphen.  Both enabling
+# and disabling can be done with wildcards (*)
+#
+# When a violation is seen it will tell you the name, so use that if you want
+# to disable it instead of fix it.  The full list is here:
+#
+# https://clang.llvm.org/extra/clang-tidy/checks/list.html
+
+Checks: "\
+  bugprone-*,\
+  cppcoreguidelines-*,\
+  google-*,\
+  performance-*,\
+  clang-analyzer-*,\
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic"  # C programs need pointers
+
+
+# Individual checks have options, see the item in the list for what's available
+
+CheckOptions:
+  - key:   readability-magic-numbers.IgnoredIntegerValues
+    value: '-1;0;1;2;3;4'
+  - key:   bugprone-assert-side-effect.CheckFunctionCalls
+    value: 'true'
+
+
+# If you want to specifically include or exclude headers from Clang-Tidy
+# processing, you can specify it as a RegEx here.
+
+HeaderFilterRegex: ".*"
+
+
+# Which warnings are considered errors (all of them)
+
+WarningsAsErrors: "*"

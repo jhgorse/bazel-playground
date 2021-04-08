@@ -83,3 +83,22 @@ Now, run:
     bazel test //test:hello-test
 
 Yaay!!
+
+
+### Support for Static Analysis, Linting, Guidelines... 
+
+Clang-Tidy is an interface to the "Clang Powertools".  It not only does C and C++ linting, but it also has support for Clang Static Analyzer and many cool features: 
+
+https://www.clangpowertools.com/QaA.html
+https://clang.llvm.org/extra/clang-tidy/
+https://clang.llvm.org/extra/clang-tidy/checks/list.html
+
+The following MIT-Licensed Bazel code is incorporated into this project in the `clang-tidy/` directory:
+
+https://github.com/erenon/bazel_clang_tidy
+
+In order to invoke it, use:
+
+> `bazel build //main:hello-world --aspects clang_tidy/clang_tidy.bzl%clang_tidy_aspect --output_groups=report`
+
+Global settings for what warnings the tool should enable or ignore are in the `/.clang-tidy` file.  See notes in that file.
