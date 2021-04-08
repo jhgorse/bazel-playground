@@ -1,10 +1,10 @@
+# https://stackoverflow.com/a/51847781
 cc_test(
     name = "hello-test",
     srcs = ["hello-test.cc"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
-        "@gtest//:gtest-main",
-        "//main:hello-greet",
+        "@gtest//:gtest",  # need for #include "gtest/gtest.h"
+        "@gtest//:gtest_main",  # need because hello-test has no main()
+        "//main:hello-greet",  # need for #include "main/hello-greet.h"
     ]
 )
-
